@@ -67,8 +67,8 @@ Este documento organiza o desenvolvimento em requisitos funcionais, não-funcion
     * `DashboardPage`: Página de visualização estatística do progresso ecológico.
     * `ConfiguracoesPage`: Interface para personalização de preferências do sistema.
 
-  ---
+---
 
-  ## 7. Prototipagem
+## 7. Prototipagem
 
-  * Link: https://www.figma.com/design/L4DfGkUrESeULw0AJ6VvBV/EcoTrack?node-id=0-1&p=f&t=kScoGlfI9ebt90qa-0
+* Link: https://www.figma.com/design/L4DfGkUrESeULw0AJ6VvBV/EcoTrack?node-id=0-1&p=f&t=kScoGlfI9ebt90qa-0

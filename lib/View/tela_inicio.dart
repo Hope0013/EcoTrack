@@ -1,23 +1,24 @@
-import 'package:eco_track/Controller/app_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:eco_track/View/tela_principal.dart'; 
 
 class TelaInicial extends StatelessWidget {
   const TelaInicial({super.key});
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
-      // SafeArea impede que o conteúdo fique sob o entalhe (notch) ou barra de status
+      // SafeArea impede que o conteúdo fique sobre outros elementos da tela
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 50),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // --- 1. LOGO E TÍTULO ---
               Column(
                 children: [
                   const Icon(
+                    // Coloca o icon de folha para fazer como se fosse uma logo
                     Icons.eco, 
                     size: 100, 
                     color: Colors.green
@@ -35,23 +36,21 @@ class TelaInicial extends StatelessWidget {
                 ],
               ),
 
-              // --- 2. ILUSTRAÇÃO CENTRAL ---
-              // Usamos um Container com cor de fundo leve para simular a área da imagem
               Container(
+                // Container onde tera um icon e o texto resumindo a função do app
                 height: 220,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.green.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: const Icon(
-                  Icons.nature_people, 
-                  size: 120, 
-                  color: Colors.green
+                  Icons.nature_people,
+                  size: 120,
+                  color: Colors.green,
                 ),
               ),
 
-              // --- 3. TEXTO DESCRITIVO ---
               const Text(
                 "Acompanhe seus hábitos sustentáveis e veja seu impacto positivo no planeta.",
                 textAlign: TextAlign.center,
@@ -63,7 +62,6 @@ class TelaInicial extends StatelessWidget {
                 ),
               ),
 
-              // --- 4. BOTÃO DE AÇÃO ---
               SizedBox(
                 width: double.infinity,
                 height: 60,
@@ -76,12 +74,11 @@ class TelaInicial extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15),
                     ),
                   ),
+                  // Botão para o usuario ir para a tela principal do app
                   onPressed: () {
-                    // Navigator.pushReplacement substitui a tela atual 
-                    // para o usuário não voltar para a Splash ao apertar "voltar"
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => const AppController()),
+                      MaterialPageRoute(builder: (context) => const TelaPrincipal()),
                     );
                   },
                   child: const Text(

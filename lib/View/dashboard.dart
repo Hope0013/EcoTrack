@@ -15,24 +15,32 @@ class DashboardPage extends StatelessWidget {
             padding: EdgeInsets.all(8),
             child: Column(
               children: [
-                //lista de Card (informações do controller)
+                // Cards com as informeções
                 _construtorCard(
+                  // Card com "total de habitos"
                   titulo: "Total de Hábitos", 
+                  // Pega o "valor" da funçaõ no controller
                   value: controller.totalHabitos.toString(), 
                   icon: Icons.list_alt, 
                   color: const Color.fromARGB(255, 10, 75, 173)),
                 _construtorCard(
+                  // Card com os habitos concluidos
                   titulo: "Hábitos Concluídas", 
+                  // Pega o "valor" da funçaõ no controller
                   value: controller.totalConcluidos.toString(), 
                   icon: Icons.check_circle, 
                   color: const Color.fromARGB(255, 0, 177, 6)),
                 _construtorCard(
+                  // Card para habitos pendentes
                   titulo: "Hábitos Pendentes", 
+                  // Pega o "valor" da funçaõ no controller
                   value: controller.totalPendentes.toString(), 
                   icon: Icons.pending_actions, 
                   color: const Color.fromARGB(255, 255, 218, 54)),
                 _construtorCard(
-                  titulo: "Porcentagem de Hábitos Concluídas", 
+                  // E a porcentagem de habitos concluidos
+                  titulo: "Porcentagem de Hábitos Concluídas",
+                  // Pega o "valor" da funçaõ no controller 
                   value: controller.pontuacaoEcologica.toString(), 
                   icon: Icons.percent, 
                   color: const Color.fromARGB(255, 160, 59, 255))
@@ -45,7 +53,7 @@ class DashboardPage extends StatelessWidget {
   }
 }
 
-//criar um widget para para facilitar a criação dos card
+// Estrutura do card separada para facilitar e deixar o codigo sem repetições desnecessarias
 
 Widget _construtorCard({
   required String titulo,

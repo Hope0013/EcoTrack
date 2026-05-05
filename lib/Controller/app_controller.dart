@@ -12,7 +12,7 @@ class AppController extends ChangeNotifier {
   }
 
   // Habitos
-  final List<Habito> _habitos = []; // Final para que a variavel não mude 
+  final List<Habito> _habitos = []; // "Final" para que a variavel não mude 
   List<Habito> get habitos => _habitos;
 
   // Adiciona um novo hábito à lista
@@ -22,34 +22,30 @@ class AppController extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Inverte o status de concluído
+  // Inverte o status de pendente para concluido ou de concluido para pendente
   void alterarHabito(int index) {
     _habitos[index].concluida = !_habitos[index].concluida;
     notifyListeners();
   }
 
-  // Exclui o hábito
-  void removerHabito(int index) {
-    _habitos.removeAt(index);
-    notifyListeners();
-  }
-
   // Dashboard
 
-  // Retorna apenas a lista de hábitos que ainda não foram conlcuidos
+  // Filtra apenas a lista de hábitos que ainda não foram conlcuidos
   List<Habito> get habitosPendentes => 
       _habitos.where((h) => !h.concluida).toList();
 
-  // Retorna apenas a lista de hábitos já realizados
+  // Filtra apenas a lista de hábitos já realizados
   List<Habito> get habitosConcluidos => 
       _habitos.where((h) => h.concluida).toList();
 
-  int get totalHabitos => _habitos.length;
+  int get totalHabitos => _habitos.length; // Pega o total de habitos
+  int get totalConcluidos => habitosConcluidos.length; // Pega o total de habitos concluidos
+  int get totalPendentes => habitosPendentes.length; // Pega o total de habitos pendentes
 
-  int get totalConcluidos => habitosConcluidos.length;
-
-  int get totalPendentes => habitosPendentes.length;
-
-  // Cálculo de pontuação (ex: 10 pontos por hábito concluído)
-  double get pontuacaoEcologica => totalConcluidos * 10.0;
+  // Calcula a porcentagem de habitos concluidos
+  double get pontuacaoEcologica {
+    if (_habitos.isEmpty) return 0.0; // Evita erro de divisão por zero
+    double porcentagem = (totalConcluidos / totalHabitos) * 100;
+    return double.parse(porcentagem.toStringAsFixed(1)); // Garante que o retorno não seja com uma dizima infinita
+  }
 }
